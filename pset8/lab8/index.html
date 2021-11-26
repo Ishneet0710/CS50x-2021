@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+        <link href="styles.css" rel="stylesheet">
+        <title>Trivia!</title>
+
+        <script>
+
+            document.addEventListener('DOMContentLoaded', function(){
+                //MCQ Section
+                let correct = document.querySelector('.correct');
+                correct.addEventListener('click', function(){
+                    correct.style.backgroundColor = 'green';
+                    document.querySelector('#resultone').innerHTML = 'Correct!';
+                });
+                let incorrect = document.querySelectorAll('.incorrect');
+                for(let i = 0; i<incorrect.length; i++){
+                    incorrect[i].addEventListener('click', function(){
+                        incorrect[i].style.backgroundColor = 'red';
+                        document.querySelector('#resultone').innerHTML = 'Incorrect!';
+                    });
+                }
+                //Open Ended Section
+                document.querySelector('#check').addEventListener('click', function(){
+                    let answer = document.querySelector('input');
+                    if(answer.value == 'Fermion'){
+                        answer.style.backgroundColor = 'green';
+                        document.querySelector('#resultwo').innerHTML = 'Correct!';
+                    }
+                    else{
+                        answer.style.backgroundColor = 'red';
+                        document.querySelector('#resultwo').innerHTML = 'Incorrect!';
+                    }
+                });
+            });
+        </script>
+
+    </head>
+    <body>
+
+        <div class="jumbotron">
+            <h1>Trivia!</h1>
+        </div>
+
+        <div class="container">
+
+            <div class="section">
+                <h2>Part 1: Multiple Choice </h2>
+                <hr>
+
+                <h3> What is the name of the scientist that discovered the photoelectric effect?</h3>
+                <button type="button" class="incorrect">Richard Feynman</button>
+                <button type="button" class="correct">Albert Einstein</button>
+                <button type="button" class="incorrect">Stephen Hawking</button>
+                <p id="resultone"></p>
+
+            </div>
+
+            <div class="section">
+                <h2>Part 2: Free Response</h2>
+                <hr>
+
+                <h3>What is the name of the particle that follows Fermi–Dirac statistics and generally has half odd integer spin?</h3>
+                <input type="text">
+                <button type="button" id="check">Check Answer</button>
+                <p id="resultwo"></p>
+            </div>
+
+        </div>
+    </body>
+</html>
